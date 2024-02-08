@@ -12,6 +12,40 @@ jQuery(document).ready(function () {
         $('#label_num_beams').text('# beam search: ' + slider2.val())
     })
 
+    $('#upload_dataset').change(function() {
+        $('#upload-form').submit();
+    });
+
+    $('#upload-form').submit(function(event) {
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
+        
+        $.ajax({
+            type: 'POST',
+            url: '/upload',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                alert(response);
+            },
+            beforeSend: function () {
+                $('.overlay').show()
+            },
+            complete: function () {
+                $('.overlay').hide()
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+
+
+    $('#download_dataset').on('click', function () {
+         window.location.href = '/dataset_download';
+    })
+
     $('#btn-process').on('click', function () {
         input_text = $('#txt_input').val()
         model = $('#input_model').val()
