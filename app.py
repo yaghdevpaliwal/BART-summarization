@@ -74,7 +74,7 @@ def dataset_download():
         output.getvalue(),
         mimetype="text/csv",
         headers={"Content-disposition":
-                "attachment; filename=mydata.csv"})
+                "attachment; filename=dataset.csv"})
       
     
 import csv
