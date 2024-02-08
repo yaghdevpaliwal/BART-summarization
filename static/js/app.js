@@ -36,7 +36,7 @@ jQuery(document).ready(function () {
                 $('.overlay').hide()
             },
             error: function(xhr, status, error) {
-                console.error(xhr.responseText);
+                alert(xhr.responseText);
             }
         });
     });
